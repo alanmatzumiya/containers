@@ -31,7 +31,7 @@ $( "#searchForm" ).submit(function( event ) {
  
   // Put the results in a div
   getData.done(function( data ) {
-    var content = Object.data.keys();
+    var content = Object.keys(data);
     $( "#result" ).text( content[0] );
   });
 });
