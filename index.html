@@ -27,10 +27,10 @@ $( "#searchForm" ).submit(function( event ) {
     url = $form.attr( "action" );
  
   // Send the data using post
-  var posting = $.post( "https://circuitalminds.herokuapp.com/api/music?token=circuitalminds&option=get", { s: term } );
+  var getData= $.get("https://circuitalminds.herokuapp.com/api/music?token=circuitalminds&option=get");
  
   // Put the results in a div
-  posting.done(function( data ) {
+  getData.done(function( data ) {
     var content = $( data ).find( "#content" );
     $( "#result" ).empty().append( content );
   });
