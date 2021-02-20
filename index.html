@@ -36,7 +36,7 @@ $( "#searchForm" ).submit(function( event ) {
           var dataLen = newData.length;
           var text = "<ul>";
           for (var i = 0; i < dataLen; i++) {
-                text += "<li><p><a href='" + newData['url'] + "'>" + newData['url'] + "</a></p></li>";
+                text += "<li><p><a href='" + newData[i]["url"] + "'>" + newData[i]['url'] + "</a></p></li>";
           }
           text += "</ul>";
           document.getElementById("result").innerHTML = text;
