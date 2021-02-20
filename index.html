@@ -46,8 +46,6 @@ $( "#searchForm" ).submit(function( event ) {
 });
 </script>
 <script>
-
-var filtered = arr.filter(a => a.type == "ar");
 var query = "notebooks";
 var module = "module_0";
 var topic = "engineering-basic";
@@ -56,13 +54,14 @@ var url = "https://circuitalminds.herokuapp.com/api/";
 var getData = $.get(url + query + "?token=circuitalminds&option=get");
 // Put the results in a div
 getData.done(function( data ) {
-      var names = Object.keys(data);
+      var arr = Object.keys(data);
+      
+      var names = arr.filter(a => a.module == module);
       var namesLen = names.length;
       var text = "<ul>";
 
-      for (var i = 0; i < namesLen; i++) { 
-        if (data[names[i]]["module"] == module && data[names[i]]["topic"] == topic) {
-            text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
+      for (var i = 0; i < namesLen; i++) {
+            text += "<li><p><a href='" + names[i] + "'>" + names[i] + "</a></p></li>";
         }
       }
 
