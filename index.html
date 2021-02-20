@@ -47,15 +47,13 @@ $( "#searchForm" ).submit(function( event ) {
 </script>
 <script>
 var query = "notebooks";
+var module = "module_0";
+var topic = "engineering-basic";
 var url = "https://circuitalminds.herokuapp.com/api/";
 // Send the data using get
 var getData = $.get(url + query + "?token=circuitalminds&option=get");
-
-// Put the results in a div
 // Put the results in a div
 getData.done(function( data ) {
-      var module = "module_0";
-      var topic = "engineering-basic";
       var names = Object.keys(data);
       var namesLen = names.length;
       var text = "<ul>";
