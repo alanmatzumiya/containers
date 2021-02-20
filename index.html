@@ -22,9 +22,9 @@ $( "#searchForm" ).submit(function( event ) {
 
     // Stop form from submitting normally
     event.preventDefault();
-    var query = document.getElementById("query").text;
-    var module = document.getElementById("filter").text;
-    var topic = document.getElementById("topic").text;
+    var query = document.getElementById("query").value;
+    var module = document.getElementById("filter").value;
+    var topic = document.getElementById("topic").value;
     var url = "https://circuitalminds.herokuapp.com/api/";
     // Send the data using get
     var getData = $.get(url + query + "?token=circuitalminds&option=get");
