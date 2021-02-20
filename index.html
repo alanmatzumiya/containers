@@ -57,14 +57,13 @@ getData.done(function( data ) {
       var arr = Object.keys(data);
       
       var names = arr.filter(a => a.module == module);
+      console.log(names);
       var namesLen = names.length;
       var text = "<ul>";
 
       for (var i = 0; i < namesLen; i++) {
             text += "<li><p><a href='" + names[i] + "'>" + names[i] + "</a></p></li>";
-        }
       }
-
       text += "</ul>";
       document.getElementById("result").innerHTML = text;
 });
