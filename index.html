@@ -48,24 +48,27 @@ $( "#searchForm" ).submit(function( event ) {
 <script>
 var query = "notebooks";
 var url = "https://circuitalminds.herokuapp.com/api/";
-var module = "module_0";
-var topic = "engineering-basic";
 // Send the data using get
 var getData = $.get(url + query + "?token=circuitalminds&option=get");
-var data = getData.responseJSON;  
+
 // Put the results in a div
-var names = Object.keys(data);
-var namesLen = names.length;
-var text = "<ul>";
+// Put the results in a div
+getData.done(function( data ) {
+      var module = "module_0";
+      var topic = "engineering-basic";
+      var names = Object.keys(data);
+      var namesLen = names.length;
+      var text = "<ul>";
 
-for (var i = 0; i < namesLen; i++) { 
-  if (data[names[i]]["module"] == module && data[names[i]]["topic"] == topic) {
-      text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
-  }
-}
+      for (var i = 0; i < namesLen; i++) { 
+        if (data[names[i]]["module"] == module && data[names[i]]["topic"] == topic) {
+            text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
+        }
+      }
 
-text += "</ul>";
-document.getElementById("result").innerHTML = text;
+      text += "</ul>";
+      document.getElementById("result").innerHTML = text;
+});
 </script>  
 </body>
 </html>
