@@ -51,22 +51,21 @@ var url = "https://circuitalminds.herokuapp.com/api/";
 var module = "module_0";
 var topic = "engineering-basic";
 // Send the data using get
-var getData= $.get(url + query + "?token=circuitalminds&option=get");
+var getData = $.get(url + query + "?token=circuitalminds&option=get");
+var data = getData.responseJSON;  
 // Put the results in a div
-getData.done(function( data, module, topic ) {
-    var text, namesLen, i;
-    var names = Object.keys(data);
-    namesLen = names.length;
-    text = "<ul>";
+var names = Object.keys(data);
+var namesLen = names.length;
+var text = "<ul>";
 
-    for (i = 0; i < namesLen; i++) { 
-      if (data[names[i]]["module"] == module && data[names[i]]["topic"] == topic) {
-          text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
-      }
-    }
-    text += "</ul>";
-    document.getElementById("result").innerHTML = text;
-});
+for (var i = 0; i < namesLen; i++) { 
+  if (data[names[i]]["module"] == module && data[names[i]]["topic"] == topic) {
+      text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
+  }
+}
+
+text += "</ul>";
+document.getElementById("result").innerHTML = text;
 </script>  
 </body>
 </html>
