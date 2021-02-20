@@ -39,7 +39,7 @@ $( "#searchForm" ).submit(function( event ) {
     text = "<ul>";
     
     for (i = 0; i < namesLen; i++) { 
-      if (data[names[i]["module"] == module && data[names[i]["topic"] == topic) {
+      if (data[names[i]]["module"] == module && data[names[i]]["topic"] == topic) {
           text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
       }
     }
