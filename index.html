@@ -24,10 +24,10 @@ $( "#searchForm" ).submit(function( event ) {
   // Get some values from elements on the page:
   var $form = $( this ),
     query = $form.find( "input[name='query']" ).val(),
-    url = $form.attr( "action" );
- 
-  // Send the data using post
-  var getData= $.get("https://circuitalminds.herokuapp.com/api/" + query + "?token=circuitalminds&option=get");
+    url = "https://circuitalminds.herokuapp.com/api/";
+
+  // Send the data using get
+  var getData= $.get(url + query + "?token=circuitalminds&option=get");
  
   // Put the results in a div
   getData.done(function( data ) {
