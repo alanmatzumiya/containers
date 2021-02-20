@@ -37,7 +37,7 @@ $( "#searchForm" ).submit(function( event ) {
     text = "<ul>";
     
     for (i = 0; i < namesLen; i++) {
-      text += "<li>" + names[i] + " - " + data[names[i]]['url'] + "</li>";
+      text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
     }
     text += "</ul>";
     
