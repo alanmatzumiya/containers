@@ -19,53 +19,28 @@
 <script>
 // Attach a submit handler to the form
 $( "#searchForm" ).submit(function( event ) {
- 
-  // Stop form from submitting normally
-  event.preventDefault();
- 
-  // Get some values from elements on the page:
-  var $form = $( this ),
-    query = $form.find( "input[name='query']" ).val(),
-    url = "https://circuitalminds.herokuapp.com/api/";
 
-  // Send the data using get
-  var getData= $.get(url + query + "?token=circuitalminds&option=get");
- 
-  // Put the results in a div
-  getData.done(function( data ) {
-    var text, namesLen, i;
-    var names = Object.keys(data);
-    namesLen = names.length;
-    var module = "module_0";
-    var topic = "engineering-basic";
-    text = "<ul>";
-    for (i = 0; i < namesLen; i++) { 
-          text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
-    }
-    text += "</ul>";
-    document.getElementById("result").innerHTML = text;
-  });
-});
-</script>
-<script>
-var query = document.getElementById("query").text;
-var module = document.getElementById("filter").text;
-var topic = document.getElementById("topic").text;
-var url = "https://circuitalminds.herokuapp.com/api/";
-// Send the data using get
-var getData = $.get(url + query + "?token=circuitalminds&option=get");
-// Put the results in a div
-getData.done(function( data ) {
-      var RespData = getData.responseJSON;
-      var objData = Object.values(RespData);
-      var newData = objData.filter( element => element.module == module);
-      var dataLen = newData.length;
-      var text = "<ul>";
-      for (var i = 0; i < dataLen; i++) {
-            text += "<li><p><a href='" + newData['url'] + "'>" + newData['url'] + "</a></p></li>";
-      }
-      text += "</ul>";
-      document.getElementById("result").innerHTML = text;
+    // Stop form from submitting normally
+    event.preventDefault();
+    var query = document.getElementById("query").text;
+    var module = document.getElementById("filter").text;
+    var topic = document.getElementById("topic").text;
+    var url = "https://circuitalminds.herokuapp.com/api/";
+    // Send the data using get
+    var getData = $.get(url + query + "?token=circuitalminds&option=get");
+    // Put the results in a div
+    getData.done(function( data ) {
+          var RespData = getData.responseJSON;
+          var objData = Object.values(RespData);
+          var newData = objData.filter( element => element.module == module);
+          var dataLen = newData.length;
+          var text = "<ul>";
+          for (var i = 0; i < dataLen; i++) {
+                text += "<li><p><a href='" + newData['url'] + "'>" + newData['url'] + "</a></p></li>";
+          }
+          text += "</ul>";
+          document.getElementById("result").innerHTML = text;
+    });
 });
 </script>  
 </body>
