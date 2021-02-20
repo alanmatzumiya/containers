@@ -27,12 +27,21 @@ $( "#searchForm" ).submit(function( event ) {
     url = $form.attr( "action" );
  
   // Send the data using post
-  var getData= $.get("https://circuitalminds.herokuapp.com/api/music?token=circuitalminds&option=get");
+  var getData= $.get("https://circuitalminds.herokuapp.com/api/repos?token=circuitalminds&option=get");
  
   // Put the results in a div
   getData.done(function( data ) {
+    var text, contentLen, i;
     var content = Object.keys(data);
-    $( "#result" ).text( content[0] );
+    contentLen = content.length;
+    text = "<ul>";
+    
+    for (i = 0; i < contentLen; i++) {
+      text += "<li>" + content[i] + "</li>";
+    }
+    text += "</ul>";
+    
+    document.getElementById("result").innerHTML = text;
   });
 });
 </script>
