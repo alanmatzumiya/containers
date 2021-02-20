@@ -34,10 +34,14 @@ $( "#searchForm" ).submit(function( event ) {
     var text, namesLen, i;
     var names = Object.keys(data);
     namesLen = names.length;
+    var module = "module_0";
+    var topic = "engineering-basic"
     text = "<ul>";
     
-    for (i = 0; i < namesLen; i++) {
-      text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
+    for (i = 0; i < namesLen; i++) { 
+      if (data[names[i]["module"] == module && data[names[i]["topic"] == topic) {
+          text += "<li><p><a href='" + data[names[i]]['url'] + "'>" + names[i] + "</a></p></li>";
+      }
     }
     text += "</ul>";
     
