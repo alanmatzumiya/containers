@@ -31,13 +31,13 @@ $( "#searchForm" ).submit(function( event ) {
  
   // Put the results in a div
   getData.done(function( data ) {
-    var text, contentLen, i;
-    var content = Object.keys(data);
-    contentLen = content.length;
+    var text, namesLen, i;
+    var names = Object.keys(data);
+    namesLen = names.length;
     text = "<ul>";
     
-    for (i = 0; i < contentLen; i++) {
-      text += "<li>" + content[i] + "</li>";
+    for (i = 0; i < namesLen; i++) {
+      text += "<li>" + names[i] + " - " + data[names[i]]['url'] + "</li>";
     }
     text += "</ul>";
     
