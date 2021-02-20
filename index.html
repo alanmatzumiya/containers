@@ -8,7 +8,9 @@
 <body>
  
 <form action="/" id="searchForm">
-  <input type="text" name="query" placeholder="Search...">
+  <input id="query" type="text" name="query" placeholder="Search...">
+  <input id="filter" type="text" name="filter" placeholder="Filter...">
+  <input id="topic" type="text" name="topic" placeholder="Topic...">
   <input type="submit" value="Search">
 </form>
 <!-- the result of the search will be rendered inside this div -->
@@ -46,23 +48,21 @@ $( "#searchForm" ).submit(function( event ) {
 });
 </script>
 <script>
-var query = "notebooks";
-var module = "module_0";
-var topic = "engineering-basic";
+var query = document.getElementById("query").text;
+var module = document.getElementById("filter").text;
+var topic = document.getElementById("topic").text;
 var url = "https://circuitalminds.herokuapp.com/api/";
 // Send the data using get
 var getData = $.get(url + query + "?token=circuitalminds&option=get");
 // Put the results in a div
 getData.done(function( data ) {
-      var arr = Object.keys(data);
-      
-      var names = arr.filter(a => a.module == module);
-      console.log(names);
-      var namesLen = names.length;
+      var RespData = getData.responseJSON;
+      var objData = Object.values(RespData);
+      var newData = objData.filter( element => element.module == module);
+      var dataLen = newData.length;
       var text = "<ul>";
-
-      for (var i = 0; i < namesLen; i++) {
-            text += "<li><p><a href='" + names[i] + "'>" + names[i] + "</a></p></li>";
+      for (var i = 0; i < dataLen; i++) {
+            text += "<li><p><a href='" + newData['url'] + "'>" + newData['url'] + "</a></p></li>";
       }
       text += "</ul>";
       document.getElementById("result").innerHTML = text;
