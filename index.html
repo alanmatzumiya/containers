@@ -16,6 +16,59 @@
 <!-- the result of the search will be rendered inside this div -->
 <div id="result"></div>
  
+  
+<form id="contact" method="post" action="">
+<div class="row uniform">
+<div class="6u 12u$(xsmall)">
+  <input type="text" name="name" id="name" value="" placeholder="Name">
+</div>
+<div class="6u$ 12u$(xsmall)">
+  <input type="email" name="email" id="email" value="" placeholder="Email">
+</div>
+<!-- Break -->
+<div class="12u$">
+  <div class="select-wrapper">
+    <select name="category" id="category">
+      <option value="">- Category -</option>
+      <option value="1">Query</option>
+      <option value="2">Business</option>
+      <option value="3">Human Resources</option>
+    </select>
+  </div>
+</div>
+<!-- Break -->
+<div class="12u$">
+  <lt-mirror style="display: none;"><lt-highlighter style="display: none; z-index: 1 !important;" contenteditable="false"><lt-div spellcheck="false" class="lt-highlighter__wrapper" style="width: 399px !important; height: 259.333px !important; transform: none !important; transform-origin: 200.5px 130.667px 0px !important; margin-top: 2px !important; margin-left: 1px !important;"><lt-div class="lt-highlighter__scrollElement" style="top: 0px !important; left: 0px !important; width: 399px !important; height: 259px !important;"><canvas class="lt-highlighter__canvas" width="85" height="26" style="display: none; top: 18px !important; left: 18px !important;"></canvas></lt-div></lt-div></lt-highlighter><lt-div spellcheck="false" class="lt-mirror__wrapper notranslate" style="border-width: 1px !important; border-style: solid !important; direction: ltr !important; font: 300 18.6667px / 32.6667px &quot;Source Sans Pro&quot;, sans-serif !important; font-synthesis: weight style !important; hyphens: manual !important; letter-spacing: normal !important; line-break: auto !important; margin: 1px 0px 0px !important; padding: 14px 18.6667px !important; text-align: start !important; text-decoration: rgb(136, 136, 136) !important; text-indent: 0px !important; text-rendering: optimizelegibility !important; text-transform: none !important; transform: none !important; transform-origin: 200.5px 130.667px 0px !important; unicode-bidi: normal !important; white-space: pre-wrap !important; word-spacing: 0px !important; overflow-wrap: break-word !important; writing-mode: horizontal-tb !important; width: 361.667px !important; height: 231.333px !important;" data-lt-scroll-top="0" data-lt-scroll-left="0" data-lt-scroll-top-scaled="0" data-lt-scroll-left-scaled="0" data-lt-scroll-top-scaled-and-zoomed="0" data-lt-scroll-left-scaled-and-zoomed="0"><lt-div class="lt-mirror__canvas" style="margin-top: 0px !important; margin-left: 0px !important; width: 361.667px !important; height: 231px !important;">hvgvvfvfvfv</lt-div></lt-div><lt-div class="lt-mirror__measurer"></lt-div></lt-mirror><textarea name="message" id="message" placeholder="Enter your message" rows="6" spellcheck="false" data-gramm="false"></textarea>
+</div>
+<!-- Break -->
+<div class="12u$">
+  <div class="actions">
+    <input type="submit" value="Send Message" class="special">
+  </div>
+</div>
+</div>
+</form>
+
+<script>
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;  
+var category = document.getElementById("category").value;  
+var message = document.getElementById("message").value;
+var data = {"email": email.text, "data": {"name": name.text, "category": category.text, "message": message.text} };
+var url = "https://circuitalminds.herokuapp.com/api/messages";
+console.log(url + "?token=circuitalminds&option=add&" + data)
+$( "#contact" ).submit(function( event ) {
+
+    // Stop form from submitting normally
+    event.preventDefault();
+    var url = "https://circuitalminds.herokuapp.com/api/messages";
+    console.log(url + "?token=circuitalminds&option=add&" + data)
+    // Send the data using get
+</script>
+  
+  
+  
+  
 <script>
 // Attach a submit handler to the form
 $( "#searchForm" ).submit(function( event ) {
