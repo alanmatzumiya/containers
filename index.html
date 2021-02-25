@@ -50,7 +50,7 @@
 </form>
 
 <script>      
-var url = "https://circuitalminds.herokuapp.com/api/messages";
+var url = "https://circuitalminds.herokuapp.com/api/messages?token=circuitalminds&option=add&data=";
 
 $( "#contact" ).submit(function( event ) {
     var name = document.getElementById("name").value;
@@ -58,7 +58,7 @@ $( "#contact" ).submit(function( event ) {
     var category = document.getElementById("category");  
     var message = document.getElementById("message").value;  
     var msg = '{"email":' + email + ',"data":{"name":' + name + ',"category":' + category[category.value].text + ',"message":' + message + '}}';
-    var sending = $.get( url, {"token": "circuitalminds", "option": "add", "data": msg } );
+    var sending = $.get( url + msg );
 
     // Put the results in a div
     sendig.done(function( data ) {
