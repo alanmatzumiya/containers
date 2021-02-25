@@ -52,11 +52,13 @@
 <script>
 var name = document.getElementById("name").value;
 var email = document.getElementById("email").value;  
-var category = document.getElementById("category").value;  
+var category = document.getElementById("category");  
 var message = document.getElementById("message").value;
-var data = {"email": email.text, "data": {"name": name.text, "category": category.text, "message": message.text} };
+var data = '{"email":' + email + ',"data":{"name":' + name + ',"category":' + category[category.value].text + ',"message":' + message + '}';
+           
 var url = "https://circuitalminds.herokuapp.com/api/messages";
-console.log(url + "?token=circuitalminds&option=add&" + data)
+console.log(data);  
+console.log(url + '?token=circuitalminds&option=add&' + data);
 $( "#contact" ).submit(function( event ) {
 
     // Stop form from submitting normally
