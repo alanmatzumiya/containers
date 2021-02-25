@@ -49,17 +49,15 @@
 </div>
 </form>
 
-<script>
-var name = document.getElementById("name").value;
-var email = document.getElementById("email").value;  
-var category = document.getElementById("category");  
-var message = document.getElementById("message").value;
-var msg = '{"email":' + email + ',"data":{"name":' + name + ',"category":' + category[category.value].text + ',"message":' + message + '}}';
-           
+<script>      
 var url = "https://circuitalminds.herokuapp.com/api/messages";
 
 $( "#contact" ).submit(function( event ) {
-
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;  
+    var category = document.getElementById("category");  
+    var message = document.getElementById("message").value;  
+    var msg = '{"email":' + email + ',"data":{"name":' + name + ',"category":' + category[category.value].text + ',"message":' + message + '}}';
     var posting = $.post( url, {"token": "circuitalminds", "option": "add", "data": msg } );
 
     // Put the results in a div
