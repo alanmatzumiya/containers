@@ -17,7 +17,7 @@
 <div id="result"></div>
  
   
-<form id="contact" method="get" action="https://circuitalminds.herokuapp.com/api/messages?token=circuitalminds&option=add&data=">
+<form id="contact" method="get" action="https://circuitalminds.herokuapp.com/api/messages">
 <div class="row uniform">
 <div class="6u 12u$(xsmall)">
   <input type="text" name="name" id="name" value="" placeholder="Name">
@@ -58,7 +58,7 @@ $( "#contact" ).submit(function( event ) {
     var category = document.getElementById("category");  
     var message = document.getElementById("message").value;  
     var msg = '{"email":' + email + ',"data":{"name":' + name + ',"category":' + category[category.value].text + ',"message":' + message + '}}';
-    var sending = $.get( url + msg );
+    var sending = $.get( url + "?token=circuitalminds&option=add&data=" + msg );
 
     // Put the results in a div
     sendig.done(function( data ) {
