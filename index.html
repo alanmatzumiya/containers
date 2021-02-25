@@ -54,19 +54,21 @@ var name = document.getElementById("name").value;
 var email = document.getElementById("email").value;  
 var category = document.getElementById("category");  
 var message = document.getElementById("message").value;
-var data = '{"email":' + email + ',"data":{"name":' + name + ',"category":' + category[category.value].text + ',"message":' + message + '}';
+var msg = '{"email":' + email + ',"data":{"name":' + name + ',"category":' + category[category.value].text + ',"message":' + message + '}}';
            
 var url = "https://circuitalminds.herokuapp.com/api/messages";
-console.log(data);  
-console.log(url + '?token=circuitalminds&option=add&' + data);
+
 $( "#contact" ).submit(function( event ) {
 
-    // Stop form from submitting normally
-    event.preventDefault();
-    var url = "https://circuitalminds.herokuapp.com/api/messages";
-    console.log(url + "?token=circuitalminds&option=add&" + data)
-});  
-    // Send the data using get
+    var posting = $.post( url, {"token": "circuitalminds", "option": "add", "data": msg } );
+
+    // Put the results in a div
+    posting.done(function( data ) {
+      console.log(data);
+      var content = $( data ).find( "#content" );
+      $( "#result" ).empty().append( content );
+    });
+});
 </script>
   
   
