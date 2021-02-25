@@ -58,11 +58,11 @@ $( "#contact" ).submit(function( event ) {
     var category = document.getElementById("category");  
     var message = document.getElementById("message").value;  
     var msg = '{"email":' + email + ',"data":{"name":' + name + ',"category":' + category[category.value].text + ',"message":' + message + '}}';
-    var posting = $.post( url, {"token": "circuitalminds", "option": "add", "data": msg } );
+    var sending = $.get( url, {"token": "circuitalminds", "option": "add", "data": msg } );
 
     // Put the results in a div
-    posting.done(function( data ) {
-      console.log(data);
+    sendig.done(function( data ) {
+      console.log(data.responseJSON);
       var content = $( data ).find( "#content" );
       $( "#result" ).empty().append( content );
     });
